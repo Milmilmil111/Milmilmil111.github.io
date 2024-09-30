@@ -1,0 +1,128 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Group Business Design Project</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+			/* Ensure the main container is properly styled */
+			#main {
+				padding: 20px; /* Optional padding */
+			}
+		
+			.inner {
+				max-width: 800px; /* Optional: Adjust based on your layout */
+				margin: 0 auto; /* Center the .inner container horizontally */
+			}
+		
+			/* Style the video container to maintain aspect ratio */
+			.video-container {
+				position: relative;
+				width: 100%;
+				padding-bottom: 56.25%; /* 16:9 aspect ratio */
+				height: 0;
+				overflow: hidden;
+				margin: 20px 0; /* Optional spacing above and below the video */
+				display: flex;
+				justify-content: center; /* Center horizontally */
+			}
+		
+			.video-container iframe {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 75%;
+			}
+		</style>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo -->
+								<a href="index.html" class="logo">
+									<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Miles Mitchell</span>
+								</a>
+
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="aboutMe.html">About Me</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<h1>Mechatronics Two</h1>
+							<h2>The Project Goal:</h2>
+							<p>This project is referred to as Mechatronics Two here due to it being the second Mechatronics project I completed during my 2 years one the Integrated Design Engineering course.</p>
+							<p>Similarly to the first project there were roles that needed to be assigned to each member for the duration of the project. These were Mechanical, Electrical, Mission Control and Critical Event. As I had chosen the software role in the first project and the Mission Control role was most similar this, I opted to undertake that role a second time. The goal for the project this time was to create a hamster ball style robot and a course it was designed to follow all while being controlled wirelessly and automatically from a control unit and camera mounted overhead. The system architecture for the role is defined by the diagram below.</p>
+							<span class="image main"><img src="images/m2/mtwo1.png" alt="" /></span>
+							<h2>The Method:</h2>
+							<p>As suggested in the introduction documentation for the project, I started writing a program that could detect the position and orientation of Aruco markers (Simple versions of QR codes). These were to be used, not only to find the position and orientation of the robot but also the locations of critical points along the route the robot needed to reach.</p>
+							<span class="image main"><img src="images/m2/mtwo2.png" alt="" /></span>
+							<p>It was discovered during the development of the program to detect them that when encased within the hamster ball robot it could be difficult to detect them due to glare from the lights in the room. Fortunately however there was a solution. While writing the Aruco detection program I had also been writing one to detect blocks of colour within the frame of the camera which was meant to be used for the Critical Event. Therefore I placed blocks of colour within the hamster ball robot and these were much more reliable as even if the glare shone over part of the colour block the rest of it would still be detected. Then by enhancing the program to find the position and orientation of the robot using these blocks it became possible to detect the robot in a variety of light conditions not possible before.</p>
+							<span class="image main"><img src="images/m2/mtwo3.png" alt="" /></span>
+							<p>With the robots position and orientation found and the location of crucial points on the route known, a program needed to be written to communicate with the robot wirelessly. As an Ardunio was already being used to control the motors of the robot it was decided that an MQTT infrastructure could be used to communicate. Two programs were created, one for the robot receiving commands and another for the camera and computer to translate the robots position and orientation as well as the position of crucial locations into a route for it to follow.</p>
+							<span class="image main"><img src="images/m2/mtwo4.png" alt="" /></span>
+							<p>Now that the robot could automatically traverse the route set out in-front of it the Critical Event needed to be addressed. As previously mentioned the colour detection algorithm was used to "see" when the event was active. This was done by detecting red LEDs lighting up. While initially we encountered problems with this as the exposure of the camera was too high to detect the colour in the light, after placing a diffuser over the top, It was possible for the camera to detect it's activation. This concluded the project and after a test is was found that everything worked.</p>
+							<p>I believe that the integration of our separate roles could have been better and this project taught me to not necessarily heavily depend on others completing their work to the standards you set for yourself.</p>
+							</div>
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<section>
+								<h2>Get in touch</h2>
+								<p>milesmitchell184@gmail.com</p>
+							</section>
+							<section>
+								<h2>Follow</h2>
+								<ul class="icons">
+									<li><a href="https://www.linkedin.com/in/miles-mitchell-3977061a3/" class="icon brands style2 fa-linkedin"><span class="label">LinkedIn</span></a></li>
+									<li><a href="https://www.facebook.com/miles.mitchell.3766/" class="icon brands style2 fa-facebook"><span class="label">Facebook</span></a></li>
+								</ul>
+							</section>
+							<ul class="copyright">
+								<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

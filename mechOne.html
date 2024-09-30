@@ -1,0 +1,126 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Group Business Design Project</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+			/* Ensure the main container is properly styled */
+			#main {
+				padding: 20px; /* Optional padding */
+			}
+		
+			.inner {
+				max-width: 800px; /* Optional: Adjust based on your layout */
+				margin: 0 auto; /* Center the .inner container horizontally */
+			}
+		
+			/* Style the video container to maintain aspect ratio */
+			.video-container {
+				position: relative;
+				width: 100%;
+				padding-bottom: 56.25%; /* 16:9 aspect ratio */
+				height: 0;
+				overflow: hidden;
+				margin: 20px 0; /* Optional spacing above and below the video */
+				display: flex;
+				justify-content: center; /* Center horizontally */
+			}
+		
+			.video-container iframe {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 75%;
+			}
+		</style>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo -->
+								<a href="index.html" class="logo">
+									<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Miles Mitchell</span>
+								</a>
+
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="aboutMe.html">About Me</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<h1>Mechatronics One</h1>
+							<h2>The Project Goal:</h2>
+							<p>This project is referred to as Mechatronics One as during my 2 years on the Integrated Design Engineering course I completed two projects that had a focus on Mechatronics.</p>
+							<p>For this group project members of the group chose to specialise in either Mechanics, Electronics or Software. As I was looking to develop my software and programming skills, this was the option I chose. The goal for the project was to program a gantry and motors, using an Arduino, to detect treasure (magnets) and place a plastic up above them to mark their positions. This was done using Hall-Effect sensors which output a varying voltage based on the magnetic fields nearby.</p>
+							<h2>The Method:</h2>
+							<p>The first step for the software role was to gain control of the gantry and it's motors. This was done by connecting the gantry up to specific pins on the Arduino and combining simple writePin commands with a piece of code that configured the Arduino to be used as a pullup resistor for the DC motors of the gantry.</p>
+							<p>After gaining control of the gantry, while the Electronics role was working on cleaning the signal from the Hall-Effect sensors, I worked on scanning the position of cups as these needed to be picked up by our contraption at the beginning of the task. This was completed using a ultrasonic sensor where, as the gantry swept the area, a program detected a change in distance (seen below) and then found the centre point of this deviation. Our contraption would then lower and use a gear to pick up the cups.</p>
+							<span class="image main"><img src="images/m1/mone1.png" alt="" /></span>
+							<p>Once the cup program had been completed the Electronics behind the Hall-Effect sensors were functional so it was possible to begin programming with them. This process was done similarly to the scanning for the cups except the Hall-Effect sensors were being used rather than the Ultrasound. Due to there being multiple magnets within the work area however there was a need to 'upgrade' this code. Some of the changes made were to ignore a magnet if it was too close to one that had already been scanned (Picking up the same magnet twice) and removing a magnet from the chart to allow a second to be found within the same scanning pass shown below.</p>
+							<span class="image main"><img src="images/m1/mone2.png" alt="" /></span>
+							<p>When the magnet scanning program had been perfected and all of the magnets were being located, an efficient route between them needed to be calculated. The method for calculating this route was loosely based upon Dijkstra's algorithm for route plotting. While it is based upon Dijkstra's algorithm all of the calculations are done simultaneously rapidly increasing the speed of this process. While this program worked out very efficiently and accurately the fasted route between the magnets as the crow flies, the gantry could only move in either the X or Y direction at any time shown below. Therefore, one potential improvement or something to look into would be to find if the route calculated is still the quickest given the different path the gantry takes.</p>
+							<span class="image main"><img src="images/m1/mone3.png" alt="" /></span>
+							</div>
+					</div>
+
+				<!-- Footer -->
+				<footer id="footer">
+					<div class="inner">
+						<section>
+							<h2>Get in touch</h2>
+							<p>milesmitchell184@gmail.com</p>
+						</section>
+						<section>
+							<h2>Follow</h2>
+							<ul class="icons">
+								<li><a href="https://www.linkedin.com/in/miles-mitchell-3977061a3/" class="icon brands style2 fa-linkedin"><span class="label">LinkedIn</span></a></li>
+								<li><a href="https://www.facebook.com/miles.mitchell.3766/" class="icon brands style2 fa-facebook"><span class="label">Facebook</span></a></li>
+							</ul>
+						</section>
+						<ul class="copyright">
+							<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+						</ul>
+					</div>
+				</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
